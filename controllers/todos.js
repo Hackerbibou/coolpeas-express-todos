@@ -14,6 +14,14 @@ function index(req, res) {
     // }
 }
 
+function show(req, res) {
+    // console.log(req.params)
+    res.render('todos/show', {
+        todo: Todo.getOne(req.params.id)
+    })
+}
+
 module.exports = {
-    index
+    index,
+    show
 }

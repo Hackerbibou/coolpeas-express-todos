@@ -12,7 +12,18 @@ function getAll()  {
     return todos
 }
 
+// READ - Show get 1 object based on the `id`
+function getOne(id) {
+
+	// req.params come in as strings always. If we need another data type we need to change that string to the type we need
+	id = parseInt(id)
+	// I want to find the first element/item that matches my check
+	// If nothing is found matching that check I want to return -1
+	return todos.find(todo => todo.id === id)
+}
+
 // exporting to use elsewhere in my app
 module.exports = {
-    getAll
+    getAll,
+	getOne
 }
