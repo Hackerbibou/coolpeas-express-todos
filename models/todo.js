@@ -22,8 +22,15 @@ function getOne(id) {
 	return todos.find(todo => todo.id === id)
 }
 
+function create(todo) {
+	todo.id = Date.now() % 1000000
+	todo.done = false
+	todos.push(todo)
+}
+
 // exporting to use elsewhere in my app
 module.exports = {
-    getAll,
-	getOne
+	getAll,
+	getOne,
+	create,
 }

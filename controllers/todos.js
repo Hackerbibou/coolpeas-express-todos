@@ -23,7 +23,19 @@ function show(req, res) {
     })
 }
 
+function newToDo(req, res) {
+    res.render('todos/new', { title: 'New Todo' })
+}
+
+function create(req, res) {
+    console.log(req.body)
+    Todo.create(req.body)
+    res.redirect('/todos')
+}
+
 module.exports = {
-    index,
-    show
+	index,
+	show,
+	newToDo,
+	create,
 }

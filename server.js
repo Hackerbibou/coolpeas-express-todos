@@ -14,6 +14,19 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(function (req, res, next) {
+	console.log('Why hello there')
+
+	// res.locals is a way to send vars to templates
+	// {}
+	res.locals.time = new Date().toLocaleTimeString()
+	// {time: 11:15}
+
+	// to move to the next `app.use` in our flow of this file
+	// we NEED to call next()
+	next()
+})
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
