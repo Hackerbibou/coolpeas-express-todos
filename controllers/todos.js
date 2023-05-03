@@ -33,9 +33,15 @@ function create(req, res) {
     res.redirect('/todos')
 }
 
+function deleteTodo(req, res) {
+    Todo.deleteOne(req.params.id)
+    res.redirect('/todos')
+}
+
 module.exports = {
 	index,
 	show,
 	newToDo,
 	create,
+	deleteTodo,
 }

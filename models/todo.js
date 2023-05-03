@@ -28,9 +28,19 @@ function create(todo) {
 	todos.push(todo)
 }
 
+function deleteOne(id) {
+	id = parseInt(id)
+
+	const idx = todos.findIndex(todo => todo.id === id)
+	todos.splice(idx, 1)
+}
+
+console.log('lllllll')
+
 // exporting to use elsewhere in my app
 module.exports = {
 	getAll,
 	getOne,
 	create,
+	deleteOne
 }

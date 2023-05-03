@@ -18,6 +18,8 @@ router.get('/:id', todoController.show)
 
 router.post('/', todoController.create)
 
+router.delete('/:id', todoController.deleteTodo)
+
 // If there is only 1 export you don't need the object
 module.exports = router
 
