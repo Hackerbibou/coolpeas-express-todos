@@ -7,6 +7,7 @@ const todos = [
 	{ id: 139608, todo: 'Buy Milk', done: false },
 ]
 
+
 // READ - Index get all of a data (todos)
 function getAll()  {
     return todos
@@ -16,11 +17,11 @@ function getAll()  {
 function getOne(id) {
 
 	// req.params come in as strings always. If we need another data type we need to change that string to the type we need
-	id = parseInt(id)
 	// I want to find the first element/item that matches my check
 	// If nothing is found matching that check I want to return -1
-	return todos.find(todo => todo.id === id)
+	return todos.find(todo => todo.id === parseInt(id))
 }
+
 
 function create(todo) {
 	todo.id = Date.now() % 1000000
@@ -35,12 +36,17 @@ function deleteOne(id) {
 	todos.splice(idx, 1)
 }
 
-console.log('lllllll')
+function update(id, name){
+	id = parseInt(id)
+  const todo = todos.find(todo => todo.id === id)
+  todo.todo = updateToDo.todo	
 
+}
 // exporting to use elsewhere in my app
 module.exports = {
 	getAll,
 	getOne,
 	create,
-	deleteOne
+	deleteOne,
+	update
 }

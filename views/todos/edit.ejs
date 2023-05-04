@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/todos/<%= todo.id%>?_method=PUT" method="PUT" autocomplete="off">
+        <div class="mb-3">
+            <label for="todo" class="form-label">Add a new To-Do</label>
+            <input type="text" value="<%= todo.todo%>" "class="form-control" id="todo" aria-describedby="todoHelp" name="todo">
+            <div id="todoHelp" class="form-text">Please enter a todo to be done</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Todo</button>
+    </form>
+</body>
+</html>

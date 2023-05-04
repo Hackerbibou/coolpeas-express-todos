@@ -10,9 +10,6 @@ function index(req, res) {
         todos: Todo.getAll(),
         title: 'All To-Dos'
     })
-    // {
-    //     todos: [...todos]
-    // }
 }
 
 function show(req, res) {
@@ -37,6 +34,17 @@ function deleteTodo(req, res) {
     Todo.deleteOne(req.params.id)
     res.redirect('/todos')
 }
+function update(req,res) {
+    Todo.update(req.params.id, req.body)
+    res.redirect(`/todos/${req.params.id}`)
+  }
+  function edit(req,res) {
+    const todo = Todo.getOne(req.params.id)
+    res.render('todos/edit', {
+      title: 'Edit To Do',
+      todo
+    })
+  }
 
 module.exports = {
 	index,
@@ -44,4 +52,6 @@ module.exports = {
 	newToDo,
 	create,
 	deleteTodo,
+    edit,
+    update
 }

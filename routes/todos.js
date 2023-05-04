@@ -1,33 +1,15 @@
-const express = require('express')
-const router = express.Router()
+var express = require('express');
+var router = express.Router();
+var todosCtrl = require('../controllers/todos');
+// All actual paths start with "/todos"
+// GET /todos
+router.get('/', todosCtrl.index);
+router.get('/new', todosCtrl.newToDo)
+// GET /todos/:id
+router.get('/:id', todosCtrl.show);
+router.get('/:id/edit', todosCtrl.edit)
+router.post('/', todosCtrl.create)
+router.delete('/:id', todosCtrl.deleteTodo)
+router.put('/:id', todosCtrl.update)
+module.exports = router;
 
-const todoController = require('../controllers/todos')
-
-// URL in the browser to localhost:3000/todos/kaleSoup
-// GET request localhost:3000/todos
-router.get('/', todoController.index)
-
-// localhost:3000/todos/new
-router.get('/new', todoController.newToDo)
-
-// GET request localhost:3000/todos/125223
-// Since this is a GET request we need to get the user `id` somehow. This how is with a url param
-// We can name `:id` whatever we want just as long as we then refer to it as what we named it
-// req.params.id
-router.get('/:id', todoController.show)
-
-router.post('/', todoController.create)
-
-router.delete('/:id', todoController.deleteTodo)
-
-// If there is only 1 export you don't need the object
-module.exports = router
-
-// GET - gives back information, Index show all data from a model, Show request show a single item from that model.
-
-// GET - WE CANNOT SEND WHAT IS CALLED A BODY, we cannot accept user information
-
-// PUT, PATCH - If we need to intake user information (ei. from a form) we need to have access to the body so we can send that information. We get access to the body when sending a put or patch
-
-
-// DELETE
